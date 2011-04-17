@@ -3,11 +3,6 @@
  * stacks all items in players inventory
  */
 
-importPackage(Packages.java.io);
-importPackage(Packages.java.awt);
-importPackage(Packages.com.sk89q.worldedit);
-importPackage(Packages.com.sk89q.worldedit.blocks);
-importPackage(Packages.com.sk89q.worldedit.util);
 importClass(java.util.HashSet);
 importClass(org.bukkit.craftbukkit.inventory.CraftItemStack);
 

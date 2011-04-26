@@ -1,6 +1,9 @@
- /**
+/**
  * craftscript
+ * 
  * stacks all items in players inventory
+ * 
+ * @author ochristi aka o0c
  */
 
 importClass(java.util.HashSet);
@@ -11,16 +14,16 @@ var world = player.getWorld().getWorld();
 // retrieve all players from the world
 var players = world.getPlayers().toArray();
 // loop through all players to find the executing player
-for (var derp in players) {
+for ( var derp in players) {
 	var currentPlayer = players[derp];
 	// apply stacking only to the executing player
 	if (currentPlayer.getName() == player.getName()) {
 		// get the player's inventory
-		var	playerInv = currentPlayer.getInventory();
+		var playerInv = currentPlayer.getInventory();
 		// inv size should be 36, still...
 		var invSize = playerInv.getSize();
 		// loop through all slots
-		for (var slot = 0; slot < invSize; slot++) {
+		for ( var slot = 0; slot < invSize; slot++) {
 			// slot's item ...
 			var item = playerInv.getItem(slot);
 			// ... and type id
@@ -36,7 +39,7 @@ for (var derp in players) {
 				// drop initial item from iterator
 				iter.next();
 				// loop through the rest
-				while(iter.hasNext()) {
+				while (iter.hasNext()) {
 					var nextSlot = iter.next();
 					var nextItem = playerInv.getItem(nextSlot);
 					// add all stack amounts ...

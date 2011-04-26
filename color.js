@@ -1,5 +1,6 @@
 /**
  * craftscript
+ * 
  * Allows to set signs texts with color.
  * The targeted block has to be a sign, note that blocks as a whole are seen,
  * therefore make sure there are no other blocks in line of sight.
@@ -61,4 +62,3 @@ if (targetVector != null) {
 		blocks.setBlock(targetVector, targetBlock);
 	}
 }
-

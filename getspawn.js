@@ -1,6 +1,8 @@
- /**
+/**
  * craftscript
+ * 
  * prints the spawn point coordinated
+ * 
  * @author ochristi aka o0c
  */
 
@@ -15,13 +17,13 @@ var blue = "§9";
 var red = "§c";
 
 // string lists
-var strings = ["(", x, ", ", y, ", ", z, ")"];
-var colors =  [blue, red];
+var strings = [ "(", x, ", ", y, ", ", z, ")" ];
+var colors = [ blue, red ];
 
 // compose colors and strings
 var composed = "";
 for (i in strings)
-	composed += colors[i%2] + strings[i];
+	composed += colors[i % 2] + strings[i];
 
 // print to player
 player.print(composed);

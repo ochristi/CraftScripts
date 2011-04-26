@@ -1,7 +1,9 @@
 /**
  * craftscript
- * Lists all files in the schematics folder to the player.
- * If "full" is passed as second parameter the full list is printed.
+ * 
+ * Lists all files in the schematics folder to the player. If "full" is passed
+ * as second parameter the full list is printed.
+ * 
  * @author ochristi aka o0c
  */
 
@@ -24,16 +26,16 @@ player.print(amount + " file(s) found:");
 var filelisting = "§7";
 
 // loop over all files
-for (var i = 0; i < amount; i++) {
+for ( var i = 0; i < amount; i++) {
 	var file = filelist[i];
 	var filename = new String(file.getName());
 	if (file.isFile()) {
-		if(full) {
+		if (full) {
 			// prints all files if argument is "full"
-			//player.print(i+1 + ": " + filename);
-			player.print("§7" + (i+1) + ": §c" + filename.replace(/\.schematic$/i, "§9.schematic"));
-		}
-		else {
+			// player.print(i+1 + ": " + filename);
+			player.print("§7" + (i + 1) + ": §c"
+					+ filename.replace(/\.schematic$/i, "§9.schematic"));
+		} else {
 			filelisting += filename.replace(/\.schematic$/i, ", ");
 		}
 	}

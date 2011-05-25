@@ -45,6 +45,7 @@ for ( var derp in players) {
 					playerInv.clear(slot);
 				} else {
 					affected += players[derp].getName() + " ";
+					break;
 				}
 			}
 		}

@@ -1,11 +1,12 @@
 /**
  * craftscript
  * 
- * removes all -1 (or less) "infinite" items from all online players
+ * removes all -1 (or less) "infinite" items
+ * from (all/specified) online players
  * 
- * usage:
- * /cs rem-1inv [regex]
- * if regex pattern is omitted all players are affected
+ * usage: /cs rem-1inv [regex] [?]
+ * If regex pattern is omitted all players are  affected.
+ * A non empty second argument will only print which players are matched.
  * 
  * @author ochristi aka o0c
  */
@@ -20,7 +21,7 @@ if (argv[1] != undefined) {
 }
 
 // debug (only prints the affected players without removing items)
-var debug = argv[1] != undefined;
+var debug = argv[2] != undefined;
 var affected = "";
 
 // retrieve the current world

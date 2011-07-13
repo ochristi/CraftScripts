@@ -12,22 +12,31 @@ importClass(Packages.java.util.HashMap);
 
 var currentworld = player.getWorld().getWorld();
 
+/** World ***************************************************** */
 player.print("current world: " + currentworld.getName());
+
+/** Chunks ***************************************************** */
 player.print("loaded chunks: " + currentworld.getLoadedChunks().length);
+
+/** Time ***************************************************** */
 player.print("time: " + currentworld.getTime());
-player.print("entities: " + currentworld.getEntities().size());
-var ent = new HashMap();
-for ( var i = 0; i < currentworld.getEntities().size(); i++) {
-	var currentEntity = currentworld.getEntities().get(i).toString();
-	if (!ent.containsKey(currentEntity)) {
-		ent.put(currentEntity, 1);
+
+/** Entities ***************************************************** */
+var entities = currentworld.getEntities();
+player.print("entities: " + entities.size());
+var entityCount = new HashMap();
+for ( var i = 0; i < entities.size(); i++) {
+	var currentEntity = entities.get(i).toString();
+	if (!entityCount.containsKey(currentEntity)) {
+		entityCount.put(currentEntity, 1);
 		// player.print("new " + currentEntity);
 	} else {
-		ent.put(currentEntity, parseInt(ent.get(currentEntity)) + 1);
+		entityCount.put(currentEntity,
+				parseInt(entityCount.get(currentEntity)) + 1);
 		// player.print("another " + currentEntity);
 	}
 }
-var entries = ent.entrySet();
+var entries = entityCount.entrySet();
 var iter = entries.iterator();
 var entityStr = "";
 while (iter.hasNext()) {
@@ -35,3 +44,5 @@ while (iter.hasNext()) {
 	entityStr += next.getKey() + "@" + next.getValue() + "; ";
 }
 player.print(entityStr);
+
+/** ... ***************************************************** */

@@ -1,17 +1,16 @@
 /**
  * craftscript
  * 
- * removes all -1 (or less) "infinite" items
- * from (all/specified) online players
+ * removes all -1 (or less) "infinite" items from (all/specified) online players
  * 
- * usage: /cs rem-1inv [regex] [?]
- * If regex pattern is omitted all players are  affected.
- * A non empty second argument will only print which players are matched.
+ * usage: /cs rem-1inv [regex] [?] If regex pattern is omitted all players are
+ * affected. A non empty second argument will only print which players are
+ * matched.
  * 
  * @author ochristi aka o0c
  */
 
-importClass(org.bukkit.craftbukkit.inventory.CraftItemStack);
+importClass(java.util.HashSet);
 
 // matcher
 if (argv[1] != undefined) {
@@ -22,7 +21,7 @@ if (argv[1] != undefined) {
 
 // debug (only prints the affected players without removing items)
 var debug = argv[2] != undefined;
-var affected = "";
+var affected = new HashSet();
 
 // retrieve the current world
 var world = player.getWorld().getWorld();
@@ -44,7 +43,7 @@ for ( var derp in players) {
 				if (!debug) {
 					playerInv.clear(slot);
 				} else {
-					affected += players[derp].getName() + " ";
+					affected.add(players[derp].getName());
 					break;
 				}
 			}
@@ -52,5 +51,20 @@ for ( var derp in players) {
 	}
 }
 
-// print debug
-player.print(affected);
+var names = "";
+var iter = affected.iterator();
+while (iter.hasNext()) {
+	names += " " + iter.next();
+}
+
+// print output
+if (names != "") {
+	// debug or not
+	if (!debug) {
+		player.print("removed items from: " + names);
+	} else {
+		player.print("these players would have been affected: " + names);
+	}
+} else {
+	player.print("no players affected");
+}
